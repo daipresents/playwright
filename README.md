@@ -14,7 +14,25 @@ npm init playwright@latest
 npm install dotenv --save
 ```
 
-動作確認
+ルートフォルダに.envファイルを作成。以下、サンプル。
+
+```
+# BASE URL
+BASE_URL='https://daipresents.com/'
+
+# BASIC AUTHはこんなかんじ
+# playwright.config.ts でこの値を使う
+# BASIC_AUTH_ID='${ID}'
+# BASIC_AUTH_PASS='${PASS}'
+
+# BROWSERSTACK
+BROWSERSTACK_USERNAME='${NAME}'
+BROWSERSTACK_ACCESS_KEY='{KEY}'
+```
+
+BrowserStackのユーザ名とキーは、 https://www.browserstack.com/accounts/profile/details から確認できる。
+
+## 動作確認
 
 ```
 % npx playwright test                             

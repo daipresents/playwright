@@ -38,9 +38,12 @@ export default defineConfig({
   },
 
   /* Setting timeout */
-  timeout: 60 * 1000,
+  // When using BrowserStack, if the timeout is short, 
+  // you will get an error "Session is terminated abruptly".
+  // Therefore, the timeout period is set longer.
+  timeout: 30 * 1000,
   expect: {
-    timeout: 10 * 1000,
+    timeout: 5 * 1000,
   },
 
   /* Configure projects for major browsers */

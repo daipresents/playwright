@@ -19,8 +19,8 @@ Please use these command as below.
 
 ```
 # No UI
-npx playwright test ./tests/browserstack.sample.spec.ts
+npx playwright test ./tests/browserstack-sample.spec.ts
 
 # With UI
-npx playwright test ./tests/browserstack.sample.spec.ts --ui
+npx playwright test ./tests/browserstack-sample.spec.ts --ui
 ```

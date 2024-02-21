@@ -3,7 +3,7 @@
 # Installation (For Mac)
 Install node and npm.
 
-### Install Homebrew
+## Install Homebrew
 See: https://brew.sh/ja/
 
 ```
@@ -14,7 +14,7 @@ See: https://brew.sh/ja/
 eval "$(/opt/homebrew/bin/brew shellenv)"
 ```
 
-### Install nodebrew
+## Install nodebrew
 See: https://github.com/hokaccha/nodebrew
 
 ```
@@ -28,7 +28,7 @@ curl -L git.io/nodebrew | perl - setup
 source ~/.zprofile
 ```
 
-### Install nodejs
+## Install nodejs
 
 ```
 # Install latest version
@@ -45,7 +45,7 @@ node -v
 npm -v
 ```
 
-### Clone repository
+## Clone repository
 
 ```
 git clone https://github.com/daipresents/playwright.git
@@ -72,7 +72,7 @@ BASE_URL='https://daipresents.com/'
 # BASIC_AUTH_PASS='${PASS}'
 ```
 
-### Run sample test
+## Run sample test
 
 ```
 # No UI
@@ -84,9 +84,9 @@ npx playwright test ./tests/sample.spec.ts --ui
 
 Good job!
 
-# Appendix.
+## Appendix.
 
-## Install Playwright
+### Install Playwright
 See: https://playwright.dev/docs/intro
 
 ```
@@ -99,7 +99,7 @@ Initializing project in '.'
 ✔ Install Playwright browsers (can be done manually via 'npx playwright install')? (Y/n) · true
 ```
 
-## Install dotenv
+### Install dotenv
 See: https://github.com/motdotla/dotenv?tab=readme-ov-file
 
 ```

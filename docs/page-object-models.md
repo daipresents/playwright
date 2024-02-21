@@ -1,7 +1,7 @@
 [README](../README.md) > Page Object Models
 
 # Page Object Models
-See. <https://playwright.dev/docs/pom>
+See <https://playwright.dev/docs/pom>
 
 ## Usage
 

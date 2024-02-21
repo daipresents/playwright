@@ -4,7 +4,7 @@
 Install node and npm.
 
 ## Install Homebrew
-See: https://brew.sh/ja/
+See https://brew.sh/ja/
 
 ```
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
@@ -15,7 +15,7 @@ eval "$(/opt/homebrew/bin/brew shellenv)"
 ```
 
 ## Install nodebrew
-See: https://github.com/hokaccha/nodebrew
+See https://github.com/hokaccha/nodebrew
 
 ```
 # Install nodebrew
@@ -87,7 +87,7 @@ Good job!
 ## Appendix.
 
 ### Install Playwright
-See: https://playwright.dev/docs/intro
+See https://playwright.dev/docs/intro
 
 ```
 npm init playwright@latest
@@ -100,7 +100,7 @@ Initializing project in '.'
 ```
 
 ### Install dotenv
-See: https://github.com/motdotla/dotenv?tab=readme-ov-file
+See https://github.com/motdotla/dotenv?tab=readme-ov-file
 
 ```
 npm install dotenv --save

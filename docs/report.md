@@ -1,7 +1,7 @@
 [README](../README.md) > Report
 
 # Report
-See. https://playwright.dev/docs/test-reporters
+See https://playwright.dev/docs/test-reporters
 
 ## List reporter sample
 
@@ -217,6 +217,9 @@ Running 3 tests using 3 workers
   2 passed (30.6s)
 ```
 
+Check blob file in `blob-report/report.zip`.
+
+
 ## JSON reporter sample
 
 ```
@@ -400,4 +403,104 @@ npx playwright test ./tests/sample.spec.ts --reporter=json
   }
 }
 ```
+
+## Third party reporter showcase
+
+### Allure
+See https://www.npmjs.com/package/allure-playwright and https://allurereport.org/docs/gettingstarted-installation/
+
+Weekly Downloads: over 156,000 (2024/02/21).
+
+#### Installation
+```
+# For Mac
+brew install allure
+```
+
+Windows is here: https://allurereport.org/docs/gettingstarted-installation/#install-via-scoop-for-windows
+
+and install npm package
+
+```
+npm i -D @playwright/test allure-playwright
+```
+
+#### Getting report
+Default output folder is in `allure-results/`.
+
+Generate and open Allure report by this command.
+
+```
+allure generate ./allure-results --clean && allure open ./allure-report
+```
+
+
+### Argos Visual Testing
+See https://argos-ci.com/docs/playwright
+
+
+### Currents
+See https://www.npmjs.com/package/@currents/playwright and https://currents.dev/playwright
+
+Weekly Downloads: over 14,000 (2024/02/21).
+
+#### Installation
+
+```
+npm install @currents/playwright
+```
+
+### Monocart
+See https://github.com/cenfun/monocart-reporter
+
+#### Installatin
+```
+npm i -D monocart-reporter
+```
+
+#### Getting report
+
+```
+npx playwright test ./tests/sample.spec.ts --reporter=monocart-reporter
+[MR] generating report data ...
+[MR] generating test report ...
+[MR] Test Report
+┌─────────────┬────────────────────┐
+│ Tests       │ 3                  │
+│ ├ Passed    │ 2 (66.7%)          │
+│ ├ Flaky     │ 0 (0.0%)           │
+│ ├ Skipped   │ 0 (0.0%)           │
+│ └ Failed    │ 1 (33.3%)          │
+│ Steps       │ 38                 │
+│ Suites      │ 1                  │
+│ ├ Projects  │ 1                  │
+│ ├ Files     │ 1                  │
+│ ├ Describes │ 0                  │
+│ └ Shards    │ 0                  │
+│ Retries     │ 0                  │
+│ Errors      │ 2                  │
+│ Logs        │ 0                  │
+│ Attachments │ 0                  │
+│ Artifacts   │ 0                  │
+│ Playwright  │ v1.41.2            │
+│ Date        │ 2024/2/21 17:38:43 │
+│ Duration    │ 31.7s              │
+└─────────────┴────────────────────┘
+[MR] html report: test-results/report.html (json: test-results/report.json)
+[MR] view report: npx monocart show-report test-results/report.html
+```
+
+Open the report.
+
+```
+npx monocart show-report test-results/report.html
+```
+
+
+
+
+
+ReactアプリをPlaywrightでテストする〜レポート機能〜 https://qiita.com/rikayoshimura/items/dc5d2a1c3a4a4c40ab5c
+Playwrightのサードパーティレポーターを試してみる https://zenn.dev/koheii/articles/2ec38ffbd33ca4
+
 

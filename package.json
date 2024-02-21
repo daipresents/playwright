@@ -8,10 +8,14 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@playwright/test": "^1.41.1",
-    "@types/node": "^20.11.13"
+    "@argos-ci/playwright": "^1.9.2",
+    "@playwright/test": "^1.41.2",
+    "@types/node": "^20.11.13",
+    "allure-playwright": "^2.12.2",
+    "monocart-reporter": "^2.3.3"
   },
   "dependencies": {
+    "@currents/playwright": "^0.12.1",
     "dotenv": "^16.4.1"
   }
 }

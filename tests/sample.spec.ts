@@ -23,3 +23,12 @@ test('get agile link', async ({ page }) => {
   const daipresentsAgilePage = new DaipresentsAgilePage(page);
   await expect(daipresentsAgilePage.tagTitle).toBeVisible();
 });
+
+test('faied test', async ({ page }) => {
+  // Base URLを開く
+  const daipresentsTopPage = new DaipresentsTopPage(page);
+  await daipresentsTopPage.goto();
+
+  // クリックできないところをクリック
+  await page.locator('a', { hasText: /^Non-existent element$/ }).click();
+});

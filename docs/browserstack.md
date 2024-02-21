@@ -24,3 +24,6 @@ npx playwright test ./tests/browserstack-sample.spec.ts
 # With UI
 npx playwright test ./tests/browserstack-sample.spec.ts --ui
 ```
+
+## Link
+1. https://daipresents.com/2024/01/31/playwright-typescript-browserstack/

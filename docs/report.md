@@ -1,3 +1,5 @@
+[README](../README.md) > Report
+
 # Report
 See https://playwright.dev/docs/test-reporters
 

@@ -5,3 +5,4 @@
 2. [BrowserStack](/docs/browserstack.md)
 3. [Page Object Models](/docs/page-object-models.md)
 4. [Report](/docs/report.md)
+5. [Screenshot and video](/docs/screenshot-video.md)

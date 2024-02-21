@@ -1,20 +1,25 @@
 import { test, expect } from '@playwright/test';
+import { DaipresentsTopPage } from '../pages/daipresents-top-page';
+import { DaipresentsAgilePage } from '../pages/daipresents-agile-page';
 
 test('has title', async ({ page }) => {
   // Base URLを開く
-  await page.goto('/', {waitUntil: 'domcontentloaded' });
+  const daipresentsTopPage = new DaipresentsTopPage(page);
+  await daipresentsTopPage.goto();
 
   // タイトルが表示されているか確認
-  await expect(page.getByRole('link', { name: '旅と子育てとアジャイルコーチのブログ「世界」' })).toBeVisible();
+  await expect(daipresentsTopPage.titleLink).toBeVisible();
 });
 
 test('get agile link', async ({ page }) => {
   // Base URLを開く
-  await page.goto('/', {waitUntil: 'domcontentloaded' });
+  const daipresentsTopPage = new DaipresentsTopPage(page);
+  await daipresentsTopPage.goto();
   
   // メニューをクリック
-  await page.locator('#menu-item-32293').getByRole('link', { name: 'アジャイル' }).click();
+  await daipresentsTopPage.menuAgileLink.click();
 
   // 見出しにタグが表示されているか確認
-  await expect(page.getByRole('heading', { name: 'タグ: アジャイル' }).locator('span')).toBeVisible();
+  const daipresentsAgilePage = new DaipresentsAgilePage(page);
+  await expect(daipresentsAgilePage.tagTitle).toBeVisible();
 });

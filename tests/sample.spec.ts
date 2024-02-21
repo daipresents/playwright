@@ -1,7 +1,8 @@
 import { test, expect } from '@playwright/test';
 import { DaipresentsTopPage } from '../pages/daipresents-top-page';
 import { DaipresentsAgilePage } from '../pages/daipresents-agile-page';
-import { allure } from "allure-playwright";
+import { screenshotOnFailure } from '../lib/screenshot';
+test.afterEach(screenshotOnFailure);
 
 test('has title', async ({ page }) => {
   // Base URLを開く
@@ -29,11 +30,6 @@ test('faied test', async ({ page }) => {
   // Base URLを開く
   const daipresentsTopPage = new DaipresentsTopPage(page);
   await daipresentsTopPage.goto();
-
-  // Take a screenshot
-  await allure.attachment("basic-page-screen", await page.screenshot(), {
-    contentType: "image/png",
-  });
 
   // クリックできないところをクリック
   await page.locator('a', { hasText: /^Non-existent element$/ }).click();

@@ -40,7 +40,7 @@ export default defineConfig({
 
     // See https://playwright.dev/docs/videos#record-video
     //video: "on",
-    screenshot: "on",
+    //screenshot: "on",
   },
 
   /* Setting timeout */

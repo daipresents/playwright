@@ -3,189 +3,6 @@
 # Report
 See https://playwright.dev/docs/test-reporters
 
-## List reporter sample
-
-```
-npx playwright test ./tests/sample.spec.ts --reporter=list
-
-Running 3 tests using 3 workers
-
-  ✘  1 [Google Chrome] › sample.spec.ts:27:5 › faied test (30.0s)
-  ✓  2 [Google Chrome] › sample.spec.ts:14:5 › get agile link (592ms)
-  ✓  3 [Google Chrome] › sample.spec.ts:5:5 › has title (470ms)
-
-
-  1) [Google Chrome] › sample.spec.ts:27:5 › faied test ────────────────────────────────────────────
-
-    Test timeout of 30000ms exceeded.
-
-    Error: locator.click: Test timeout of 30000ms exceeded.
-    Call log:
-      - waiting for locator('a').filter({ hasText: /^Non-existent element$/ })
-
-
-      31 |
-      32 |   // クリックできないところをクリック
-    > 33 |   await page.locator('a', { hasText: /^Non-existent element$/, timeout: 1000 }).click();
-         |                                                                  ^
-      34 | });
-      35 |
-
-        at /Users/daipresents/Work/playwright/tests/sample.spec.ts:33:66
-
-  1 failed
-    [Google Chrome] › sample.spec.ts:27:5 › faied test ─────────────────────────────────────────────
-  2 passed (30.6s)
-```
-
-Adding steps playwright.config.ts like below.
-
-```
-import { defineConfig } from '@playwright/test';
-
-export default defineConfig({
-  reporter: [['list', { printSteps: true }]],
-});
-```
-
-And test it. But the output is same as no step setting.
-
-```
-npx playwright test ./tests/sample.spec.ts
-
-Running 3 tests using 3 workers
-
-  ✓  1 [Google Chrome] › sample.spec.ts:5:5 › has title (994ms)
-  ✘  2 [Google Chrome] › sample.spec.ts:27:5 › faied test (30.0s)
-  ✓  3 [Google Chrome] › sample.spec.ts:14:5 › get agile link (1.3s)
-
-
-  1) [Google Chrome] › sample.spec.ts:27:5 › faied test ────────────────────────────────────────────
-
-    Test timeout of 30000ms exceeded.
-
-    Error: locator.click: Test timeout of 30000ms exceeded.
-    Call log:
-      - waiting for locator('a').filter({ hasText: /^Non-existent element$/ })
-
-
-      31 |
-      32 |   // クリックできないところをクリック
-    > 33 |   await page.locator('a', { hasText: /^Non-existent element$/ }).click();
-         |                                                                  ^
-      34 | });
-      35 |
-
-        at /Users/daipresents/Work/playwright/tests/sample.spec.ts:33:66
-
-  1 failed
-    [Google Chrome] › sample.spec.ts:27:5 › faied test ─────────────────────────────────────────────
-  2 passed (30.6s)
-```
-
-## Line reporter sample
-
-```
-npx playwright test ./tests/sample.spec.ts --reporter=line
-
-Running 3 tests using 3 workers
-  1) [Google Chrome] › sample.spec.ts:27:5 › faied test ────────────────────────────────────────────
-
-    Test timeout of 30000ms exceeded.
-
-    Error: locator.click: Test timeout of 30000ms exceeded.
-    Call log:
-      - waiting for locator('a').filter({ hasText: /^Non-existent element$/ })
-
-
-      31 |
-      32 |   // クリックできないところをクリック
-    > 33 |   await page.locator('a', { hasText: /^Non-existent element$/ }).click();
-         |                                                                  ^
-      34 | });
-      35 |
-
-        at /Users/daipresents/Work/playwright/tests/sample.spec.ts:33:66
-
-  1 failed
-    [Google Chrome] › sample.spec.ts:27:5 › faied test ─────────────────────────────────────────────
-  2 passed (30.5s)
-```
-
-## Dot reporter sample
-
-```
-npx playwright test ./tests/sample.spec.ts --reporter=dot 
-
-Running 3 tests using 3 workers
-··T
-
-  1) [Google Chrome] › sample.spec.ts:27:5 › faied test ────────────────────────────────────────────
-
-    Test timeout of 30000ms exceeded.
-
-    Error: locator.click: Test timeout of 30000ms exceeded.
-    Call log:
-      - waiting for locator('a').filter({ hasText: /^Non-existent element$/ })
-
-
-      31 |
-      32 |   // クリックできないところをクリック
-    > 33 |   await page.locator('a', { hasText: /^Non-existent element$/ }).click();
-         |                                                                  ^
-      34 | });
-      35 |
-
-        at /Users/daipresents/Work/playwright/tests/sample.spec.ts:33:66
-
-  1 failed
-    [Google Chrome] › sample.spec.ts:27:5 › faied test ─────────────────────────────────────────────
-  2 passed (30.6s)
-```
-
-## HTML reporter sample
-
-```
-npx playwright test ./tests/sample.spec.ts --reporter=html
-
-Running 3 tests using 3 workers
-  1) [Google Chrome] › sample.spec.ts:27:5 › faied test ────────────────────────────────────────────
-
-    Test timeout of 30000ms exceeded.
-
-    Error: locator.click: Test timeout of 30000ms exceeded.
-    Call log:
-      - waiting for locator('a').filter({ hasText: /^Non-existent element$/ })
-
-
-      31 |
-      32 |   // クリックできないところをクリック
-    > 33 |   await page.locator('a', { hasText: /^Non-existent element$/ }).click();
-         |                                                                  ^
-      34 | });
-      35 |
-
-        at /Users/daipresents/Work/playwright/tests/sample.spec.ts:33:66
-
-  1 failed
-    [Google Chrome] › sample.spec.ts:27:5 › faied test ─────────────────────────────────────────────
-  2 passed (30.6s)
-
-  Serving HTML report at http://localhost:9323. Press Ctrl+C to quit.
-```
-
-Sample images are below.
-
-![](./report-html-sample01.png)
-![](./report-html-sample02.png)
-
-If you want to open the report, please use this command as below.
-
-```
-npx playwright show-report
-```
-
-
 ## BLOB reporter sample
 
 Getting all data and use blob file for customized report.
@@ -404,6 +221,23 @@ npx playwright test ./tests/sample.spec.ts --reporter=json
 }
 ```
 
+## Screenshot
+
+TODO
+
+### Take a screenshot on failure
+See https://github.com/microsoft/playwright/issues/14854
+
+Adding these line on each spec.
+
+```
+import { screenshotOnFailure } from '../lib/screenshot';
+test.afterEach(screenshotOnFailure);
+```
+
+You can see the logic in `lib/screenshot.ts`.
+
+
 ## Third party reporter showcase
 
 ### Allure
@@ -434,10 +268,31 @@ Generate and open Allure report by this command.
 allure generate ./allure-results --clean && allure open ./allure-report
 ```
 
+#### Take a screenshot
+
+```
+import { allure } from "allure-playwright";
+
+test('has title', async ({ page }) => {
+  ...
+
+  // Take a screenshot
+  await allure.attachment("basic-page-screen", await page.screenshot(), {
+    contentType: "image/png",
+  });
+
+  ...
+});
+```
+
+#### Links
+1. ReactアプリをPlaywrightでテストする〜レポート機能〜 https://qiita.com/rikayoshimura/items/dc5d2a1c3a4a4c40ab5c
+2. Playwrightのサードパーティレポーターを試してみる https://zenn.dev/koheii/articles/2ec38ffbd33ca4
 
 ### Argos Visual Testing
 See https://argos-ci.com/docs/playwright
 
+This is CI service.
 
 ### Currents
 See https://www.npmjs.com/package/@currents/playwright and https://currents.dev/playwright
@@ -449,6 +304,12 @@ Weekly Downloads: over 14,000 (2024/02/21).
 ```
 npm install @currents/playwright
 ```
+
+### Currents
+See https://www.npmjs.com/package/@currents/playwright
+
+Reporting service.
+
 
 ### Monocart
 See https://github.com/cenfun/monocart-reporter
@@ -496,11 +357,33 @@ Open the report.
 npx monocart show-report test-results/report.html
 ```
 
+### Link
+1. Playwrightのサードパーティレポーターを試してみる https://zenn.dev/koheii/articles/2ec38ffbd33ca4
 
 
+### ReportPortal
+See https://github.com/reportportal/agent-js-playwright?tab=readme-ov-file and https://reportportal.io/
+
+Reporting by AI. Using SaaS or docker for self-hosting.
 
 
-ReactアプリをPlaywrightでテストする〜レポート機能〜 https://qiita.com/rikayoshimura/items/dc5d2a1c3a4a4c40ab5c
-Playwrightのサードパーティレポーターを試してみる https://zenn.dev/koheii/articles/2ec38ffbd33ca4
+### Serenty/JS
+See https://serenity-js.org/handbook/test-runners/playwright-test/
+
+Serenity/JS is a free and open-source acceptance testing framework.
 
 
+### Testmo
+See https://github.com/jonasclaes/playwright-testmo-reporter
+
+Playwright Testmo Reporter is a specialized test reporter designed for integration with the Testmo test management SaaS platform.
+
+### Testomat.io
+See https://github.com/testomatio/reporter/blob/master/docs/frameworks.md#playwright and https://app.testomat.io/users/sign_in
+
+Test management service.
+
+### Tesults
+See https://www.tesults.com/docs/playwright and https://www.tesults.com/
+
+Test automation reporting and test case management for quality focused tech teams.

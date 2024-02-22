@@ -1,5 +1,4 @@
 import { test, expect } from '@playwright/test';
-import {type TestInfo } from '@playwright/test';
 import { DaipresentsTopPage } from '../pages/daipresents-top-page';
 import { DaipresentsAgilePage } from '../pages/daipresents-agile-page';
 import { screenshotOnFailure } from '../lib/screenshot';

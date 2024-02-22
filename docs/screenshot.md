@@ -1,4 +1,4 @@
-[README](../README.md) > Screenshot and 
+[README](../README.md) > Screenshot
 
 # Screenshot
 
@@ -14,6 +14,8 @@ await page.screenshot({ path: 'screenshot-full.png', fullPage: true });
 // Element
 await page.locator('.header').screenshot({ path: 'screenshot-element.png' });
 ```
+
+Screenshots are stored in `/test-results`.
 
 
 ## Take a screenshot on failure

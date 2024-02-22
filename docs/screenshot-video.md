@@ -2,6 +2,20 @@
 
 # Screenshot
 
+## Take a screenshot
+See https://playwright.dev/docs/screenshots
+
+```
+await page.screenshot({ path: 'screenshot.png' });
+
+// full size
+await page.screenshot({ path: 'screenshot-full.png', fullPage: true });
+
+// Element
+await page.locator('.header').screenshot({ path: 'screenshot-element.png' });
+```
+
+
 ## Take a screenshot on failure
 See https://github.com/microsoft/playwright/issues/14854
 

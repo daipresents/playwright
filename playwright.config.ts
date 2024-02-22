@@ -39,8 +39,10 @@ export default defineConfig({
     trace: 'on-first-retry',
 
     // See https://playwright.dev/docs/videos#record-video
-    //video: "on",
-    //screenshot: "on",
+    // video: {
+    //   mode: 'on',
+    //   size: { width: 640, height: 400 }
+    // }
   },
 
   /* Setting timeout */

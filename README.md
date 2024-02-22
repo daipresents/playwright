@@ -7,3 +7,4 @@
 4. [Report](/docs/report.md)
 5. [Screenshot](/docs/screenshot.md)
 6. [Video](/docs/video.md)
+7. [Visual comparisons](/docs/visual-comparisons.md)

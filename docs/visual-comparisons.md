@@ -1,6 +1,6 @@
 [README](../README.md) > Video comparisons
 
-# Video comparisons
+# Visual comparisons
 
 ```
 // Take a screenshot for visual comparisons.

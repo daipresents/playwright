@@ -8,3 +8,4 @@
 5. [Screenshot](/docs/screenshot.md)
 6. [Video](/docs/video.md)
 7. [Visual comparisons](/docs/visual-comparisons.md)
+8. [Trace viewer](/docs/trace-viewer.md)

@@ -7,6 +7,6 @@ export async function screenshotOnFailure({ page }: { page: Page }, testInfo: Te
     // Add it to the report.
     testInfo.attachments.push({ name: 'screenshot', path: screenshotPath, contentType: 'image/png' });
     // Take the screenshot itself.
-    await page.screenshot({ path: screenshotPath, timeout: 5000 });
+    await page.screenshot({ path: screenshotPath });
   }
 }

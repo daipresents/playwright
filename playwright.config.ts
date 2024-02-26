@@ -17,7 +17,7 @@ export default defineConfig({
   /* Fail the build on CI if you accidentally left test.only in the source code. */
   forbidOnly: !!process.env.CI,
   /* Retry on CI only */
-  retries: process.env.CI ? 2 : 0,
+  retries: process.env.CI ? 1 : 1,
   /* Opt out of parallel tests on CI. */
   workers: process.env.CI ? 1 : undefined,
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
@@ -49,9 +49,9 @@ export default defineConfig({
   // When using BrowserStack, if the timeout is short, 
   // you will get an error "Session is terminated abruptly".
   // Therefore, the timeout period is set longer.
-  timeout: 30 * 1000,
+  timeout: 5 * 1000,
   expect: {
-    timeout: 5 * 1000,
+    timeout: 3 * 1000,
   },
 
   /* Configure projects for major browsers */

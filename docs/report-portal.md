@@ -37,32 +37,40 @@ cd playwright
 npm install --save-dev @reportportal/agent-js-playwright
 ```
 
-Get API Key from http://localhost:8080/ui/#userProfile/apiKeys
 And add the key to `.env` like below:
 
 ```
-REPORT_PORTAL_API_KEY='${API_KEY}'
+REPORT_PORTAL_API_KEY='${YOUR_KEY}'
+REPORT_PORTAL_URL='http://localhost:8080/api/v1'
+REPORT_PORTAL_PROJECT_NAME='${PROJECT_NAME}'
+REPORT_PORTAL_LAUNCH_NAME='${LAUNCH_NAME}'
 ```
+
+API key is here: http://localhost:8080/ui/#userProfile/apiKeys
+You can also see the config example here: http://localhost:8080/ui/#userProfile/configExamples
 
 Add the config to `playwright.config.ts`:
 
 Sample: https://github.com/reportportal/examples-js/blob/main/example-playwright/playwright.config.ts
 
 ```
-import { PlaywrightTestConfig } from '@playwright/test';
+...
 
-const RPconfig = {
+export const rpConfig = {
   apiKey: process.env.REPORT_PORTAL_API_KEY,
-  endpoint: 'https://localhost:8080/api/v1',
-  project: 'Playwright with ReportPortal Project',
-  launch: 'E2E Teest by Playwright',
-  description: 'This is for E2E testing by Playwright with ReportPortal',
+  endpoint: process.env.REPORT_PORTAL_URL,
+  project: process.env.REPORT_PORTAL_PROJECT_NAME,
+  launch : process.env.REPORT_PORTAL_LAUNCH_NAME,
 };
 
-const config: PlaywrightTestConfig = {
-  reporter: [['@reportportal/agent-js-playwright', RPconfig]],
-  testDir: './tests',
-};
+export default defineConfig({
+  ...
+
+  reporter: [
+    ['@reportportal/agent-js-playwright', rpConfig],
+  ],
+  ...
+});
 ```
 
 Add script to `package.json` file:
@@ -78,33 +86,17 @@ Add script to `package.json` file:
 Run test.
 
 ```
-npx playwright test ./tests/sample.spec.ts
+npx playwright test ./tests/sample.spec.ts:8
+
+Running 1 test using 1 worker
+
+(node:95847) Warning: Setting the NODE_TLS_REJECT_UNAUTHORIZED environment variable to '0' makes TLS connections and HTTPS requests insecure by disabling certificate verification.
+  1 passed (1.4s)
+
+ReportPortal Launch Link: http://localhost:8080/ui/#playwrightwithreportportalproject/launches/all/16
 ```
 
-If you can see certificate error like this:
+Open this link, you can see the view like below:
 
-```
-Error: self-signed certificate
-URL: https://localhost:8080/api/v1/PlaywrightWithReportPortalProject/launch
-method: POST
-    at /Users/daipresents/Work/playwright/node_modules/@reportportal/client-javascript/lib/rest.js:43:15
-    at processTicksAndRejections (node:internal/process/task_queues:95:5)
-Failed to start launch. Error: self-signed certificate
-URL: https://localhost:8080/api/v1/PlaywrightWithReportPortalProject/launch
-```
+![](./images/report-portal02.png)
 
-Add this setting to `playwright.config.ts`.
-But this setting cannot be used in production due to security issues, please use only for localhost.
-
-```
-// See https://stackoverflow.com/questions/45088006/nodejs-error-self-signed-certificate-in-certificate-chain
-// NOTICE: This setting cannot be used in production due to security issues
-// NOTICE: Please use only for localhost
-process.env['NODE_TLS_REJECT_UNAUTHORIZED'] = '0';
-```
-
-After this setting, you can see Warning log like this:
-
-```
-(node:70078) Warning: Setting the NODE_TLS_REJECT_UNAUTHORIZED environment variable to '0' makes TLS connections and HTTPS requests insecure by disabling certificate verification.
-```

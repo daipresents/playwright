@@ -19,6 +19,7 @@
   },
   "dependencies": {
     "@currents/playwright": "^0.12.1",
+    "@reportportal/client-javascript": "^5.1.2",
     "dotenv": "^16.4.1"
   }
 }

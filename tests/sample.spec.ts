@@ -25,27 +25,3 @@ test('get agile link', async ({ page }) => {
   const daipresentsAgilePage = new DaipresentsAgilePage(page);
   await expect(daipresentsAgilePage.tagTitle).toBeVisible();
 });
-
-test('faied test', async ({ page }) => {
-  // Base URLを開く
-  const daipresentsTopPage = new DaipresentsTopPage(page);
-  await daipresentsTopPage.goto();
-
-  // クリックできないところをクリック
-  await page.locator('a', { hasText: /^Non-existent element$/ }).click();
-});
-
-test('take screenshots', async ({ page }, testInfo) => {
-  // Base URLを開く
-  const daipresentsTopPage = new DaipresentsTopPage(page);
-  await daipresentsTopPage.goto();
-
-  // screenshot
-  await page.screenshot({ path: testInfo.outputPath('screenshot.png') });
-
-  // full size
-  await page.screenshot({ path: testInfo.outputPath('screenshot-full.png'), fullPage: true });
-
-  // Element screenshot
-  await page.locator('a', { hasText: '旅と子育てとアジャイルコーチのブログ「世界」' }).first().screenshot({ path: testInfo.outputPath('screenshot-element.png') });
-});

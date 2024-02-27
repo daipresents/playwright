@@ -7,6 +7,24 @@ import 'dotenv/config'
  */
 require('dotenv').config();
 
+// See https://stackoverflow.com/questions/45088006/nodejs-error-self-signed-certificate-in-certificate-chain
+// NOTICE: This setting cannot be used in production due to security issues
+// NOTICE: Please use only localhost
+process.env['NODE_TLS_REJECT_UNAUTHORIZED'] = '0';
+
+// e.g. 2021-12-08T01:29:30.811Z
+const startTime = new Date().toJSON();
+
+// See https://github.com/reportportal/agent-js-playwright?tab=readme-ov-file#configuration
+export const rpConfig = {
+  apiKey: process.env.REPORT_PORTAL_API_KEY,
+  endpoint: 'https://localhost:8080/api/v1',
+  project: 'PlaywrightWithReportPortalProject',
+  launch: 'E2E regression test',
+  description: 'This is for E2E testing by Playwright with ReportPortal',
+  startTime: startTime,
+};
+
 /**
  * See https://playwright.dev/docs/test-configuration.
  */
@@ -22,13 +40,14 @@ export default defineConfig({
   workers: process.env.CI ? 1 : undefined,
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
   reporter: [
-    ['list'],
-    ['line'],
-    ['dot'],
+    //['list', { printSteps: true }],
+    //['line'],
+    //['dot'],
     ['html', { open: 'on-failure' }],
-    ['blob', { outputDir: 'test-results/blob' }],
-    ['json', { outputFile: 'test-results/results.json' }],
-    ["allure-playwright", { outputFolder: 'test-results/allure' }]
+    //['blob', { outputDir: 'test-results/blob' }],
+    //['json', { outputFile: 'test-results/results.json' }],
+    //['allure-playwright', { outputFolder: 'test-results/allure' }],
+    //['@reportportal/agent-js-playwright', rpConfig],
   ],
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {

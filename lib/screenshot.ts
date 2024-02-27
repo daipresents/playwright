@@ -8,7 +8,6 @@ export async function screenshotOnFailure({ page }: { page: Page }, testInfo: Te
     // Add it to the report.
     testInfo.attachments.push({ name: 'screenshot', path: screenshotPath, contentType: 'image/png' });
     // Take the screenshot itself.
-    console.log(defineConfig['retries']);
     await page.screenshot({ path: screenshotPath });
   }
 }

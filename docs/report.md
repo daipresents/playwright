@@ -37,29 +37,22 @@ export default defineConfig({
 });
 ```
 
-And test it. But the output is same as no step setting.
+The output is like this:
 
 ```
 npx playwright test ./tests/sample.spec.ts
-Running 3 tests using 3 workers
-  ✓  1 [Google Chrome] › sample.spec.ts:5:5 › has title (994ms)
-  ✘  2 [Google Chrome] › sample.spec.ts:27:5 › faied test (30.0s)
-  ✓  3 [Google Chrome] › sample.spec.ts:14:5 › get agile link (1.3s)
-  1) [Google Chrome] › sample.spec.ts:27:5 › faied test ────────────────────────────────────────────
-    Test timeout of 30000ms exceeded.
-    Error: locator.click: Test timeout of 30000ms exceeded.
-    Call log:
-      - waiting for locator('a').filter({ hasText: /^Non-existent element$/ })
-      31 |
-      32 |   // クリックできないところをクリック
-    > 33 |   await page.locator('a', { hasText: /^Non-existent element$/ }).click();
-         |                                                                  ^
-      34 | });
-      35 |
-        at /Users/daipresents/Work/playwright/tests/sample.spec.ts:33:66
-  1 failed
-    [Google Chrome] › sample.spec.ts:27:5 › faied test ─────────────────────────────────────────────
-  2 passed (30.6s)
+
+Running 2 tests using 2 workers
+
+  ✓  1 [Google Chrome] › sample.spec.ts:7:5 › has title (626ms)
+  ✓  2 [Google Chrome] › sample.spec.ts:19:5 › get agile link (782ms)
+     2.1 get agile link › Base URLを開く (391ms)
+     1.1 has title › Base URLを開く (386ms)
+     1.2 has title › タイトルが表示されているか確認 (26ms)
+     2.2 get agile link › メニューをクリック (134ms)
+     2.3 get agile link › 見出しにタグが表示されているか確認 (49ms)
+
+  2 passed (1.4s)
 ```
 
 

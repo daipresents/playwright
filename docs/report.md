@@ -132,8 +132,8 @@ Running 3 tests using 3 workers
 
 Sample images are below.
 
-![](./report-html-sample01.png)
-![](./report-html-sample02.png)
+![](./images/report-html-sample01.png)
+![](./images/report-html-sample02.png)
 
 If you want to open the report, please use this command as below.
 
@@ -422,13 +422,13 @@ test('has title', async ({ page }) => {
 ```
 
 #### Sample report
-![](./report-allure-sample01.png)
-![](./report-allure-sample02.png)
-![](./report-allure-sample03.png)
-![](./report-allure-sample04.png)
-![](./report-allure-sample05.png)
-![](./report-allure-sample06.png)
-![](./report-allure-sample07.png)
+![](./images/report-allure-sample01.png)
+![](./images/report-allure-sample02.png)
+![](./images/report-allure-sample03.png)
+![](./images/report-allure-sample04.png)
+![](./images/report-allure-sample05.png)
+![](./images/report-allure-sample06.png)
+![](./images/report-allure-sample07.png)
 
 
 #### Links
@@ -495,7 +495,7 @@ npx monocart show-report test-results/report.html
 ```
 
 #### Sample report
-![](./report-monocart-sample01.png)
+![](./images/report-monocart-sample01.png)
 
 #### Link
 1. Playwrightのサードパーティレポーターを試してみる https://zenn.dev/koheii/articles/2ec38ffbd33ca4

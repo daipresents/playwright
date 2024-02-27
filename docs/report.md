@@ -401,7 +401,7 @@ Default output folder is in `allure-results/`.
 Generate and open Allure report by this command.
 
 ```
-allure generate ./allure-results --clean && allure open ./allure-report
+allure generate ./test-results/allure -o ./test-results/allure/allure-report --clean && allure open ./test-results/allure/allure-report
 ```
 
 #### Take a screenshot

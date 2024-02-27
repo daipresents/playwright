@@ -4,24 +4,33 @@ import { DaipresentsAgilePage } from '../pages/daipresents-agile-page';
 import { screenshotOnFailure } from '../lib/screenshot';
 test.afterEach(screenshotOnFailure);
 
-test('has title', async ({ page }) => {
-  // Base URLを開く
-  const daipresentsTopPage = new DaipresentsTopPage(page);
-  await daipresentsTopPage.goto();
-  
-  // タイトルが表示されているか確認
-  await expect(daipresentsTopPage.titleLink).toBeVisible();
-});
+test.describe('Test sample tests', () => {
+  test('has title', async ({ page }) => {
+    const daipresentsTopPage = new DaipresentsTopPage(page);
 
-test('get agile link', async ({ page }) => {
-  // Base URLを開く
-  const daipresentsTopPage = new DaipresentsTopPage(page);
-  await daipresentsTopPage.goto();
-  
-  // メニューをクリック
-  await daipresentsTopPage.menuAgileLink.click();
+    await test.step('Base URLを開く', async () => {
+      await daipresentsTopPage.goto();
+    });
 
-  // 見出しにタグが表示されているか確認
-  const daipresentsAgilePage = new DaipresentsAgilePage(page);
-  await expect(daipresentsAgilePage.tagTitle).toBeVisible();
+    await test.step('タイトルが表示されているか確認', async () => {
+      await expect(daipresentsTopPage.titleLink).toBeVisible();
+    });
+  });
+
+  test('get agile link', async ({ page }) => {
+    const daipresentsTopPage = new DaipresentsTopPage(page);
+
+    await test.step('Base URLを開く', async () => {
+      await daipresentsTopPage.goto();
+    });
+    
+    await test.step('メニューをクリック', async () => {
+      await daipresentsTopPage.menuAgileLink.click();
+    });
+
+    await test.step('見出しにタグが表示されているか確認', async () => {
+      const daipresentsAgilePage = new DaipresentsAgilePage(page);
+      await expect(daipresentsAgilePage.tagTitle).toBeVisible();
+    });
+  });
 });

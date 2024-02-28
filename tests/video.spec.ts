@@ -12,5 +12,4 @@ test('has title', async ({ page }) => {
 
   // debug
   const path = await page.video()?.path();
-  console.log(path);
 });

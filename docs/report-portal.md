@@ -113,3 +113,8 @@ Widgets can be added to the dashboard.
 ![](./images/report-portal06.png)
 ![](./images/report-portal07.png)
 ![](./images/report-portal09.png)
+
+## Link
+1. [ReportPortalをちょっとだけ試してみた](https://zenn.dev/kesin11/articles/ccae16e8c50335)
+2. [「さよなら Flaky 。不安定なテストの探し方」というお話](https://blog.cybozu.io/entry/2021/04/27/080000)
+3. [rspecに潜む、flaky testを可視化したい ~ReportPortal編~](https://techblog.kiramex.com/entry/2021/11/15/154859)

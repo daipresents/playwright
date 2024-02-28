@@ -100,3 +100,16 @@ Open this link, you can see the view like below:
 
 ![](./images/report-portal02.png)
 
+If the test fails, it will be displayed like this:
+
+![](./images/report-portal03.png)
+![](./images/report-portal04.png)
+![](./images/report-portal05.png)
+![](./images/report-portal08.png)
+
+## Dashboard
+Widgets can be added to the dashboard.
+
+![](./images/report-portal06.png)
+![](./images/report-portal07.png)
+![](./images/report-portal09.png)

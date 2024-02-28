@@ -106,4 +106,9 @@ See https://github.com/motdotla/dotenv?tab=readme-ov-file
 npm install dotenv --save
 ```
 
+### Install Microsoft Edge
+
+```
+npx playwright install msedge
+```
 

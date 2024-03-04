@@ -10,4 +10,4 @@
 5. [Screenshot](/docs/screenshot.md)
    1. [Video](/docs/video.md)
    2. [Visual comparisons](/docs/visual-comparisons.md)
-
+6. [Notification](./docs/notification.md)

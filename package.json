@@ -15,7 +15,8 @@
     "@reportportal/agent-js-playwright": "^5.1.7",
     "@types/node": "^20.11.13",
     "allure-playwright": "^2.12.2",
-    "monocart-reporter": "^2.3.3"
+    "monocart-reporter": "^2.3.3",
+    "playwright-slack-report": "^1.1.72"
   },
   "dependencies": {
     "@currents/playwright": "^0.12.1",

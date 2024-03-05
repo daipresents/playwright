@@ -124,6 +124,11 @@ https://www.npmjs.com/package/axios
 npm install typed-rest-client --save
 npm install axios --save
 
+https://github.com/reportportal/client-javascript/blob/64e9266faf28f6693776f92128761cc037eff678/lib/report-portal-client.js#L267
+https://github.com/ryanrosello-og/playwright-slack-report/blob/0294936b0cb105c1fa657df34fa71662458e33d7/src/LayoutGenerator.ts#L4C6-L4C21
+https://github.com/ryanrosello-og/playwright-slack-report/blob/0294936b0cb105c1fa657df34fa71662458e33d7/src/SlackWebhookClient.ts#L29
+
+
 
 ## Teams
 See [Playwright Tests with MS Teams Webhook Notifications](https://medium.com/@dnsvikas.wins/playwright-tests-with-ms-teams-webhook-notifications-58508eeb909d)

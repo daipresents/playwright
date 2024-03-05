@@ -3,17 +3,22 @@ import RPClient from '@reportportal/client-javascript/lib/report-portal-client'
 import RestClient from '@reportportal/client-javascript/lib/rest'
 
 export default class ReportPortalClient extends RPClient {
-  async getLatestLaunchByName() {
+  constructor(options, agentParams) {
+    super(options, agentParams);
+  }
+
+  async getLaunchID() {
     const url = this.config.endpoint + 
                 '/' + this.config.project +
                 '/launch/latest?' +
                 'filter.eq.name=' + this.config.launch;
 
-    const launch = await RestClient.request('GET', url, {}, { headers: this.headers });
-
-    // Only return latest launch.
-    return launch.content[0];
+    try {
+      const launch = await RestClient.request('GET', url, {}, { headers: this.headers });
+      console.log('ReportPortalClient.getLatestLaunchByName launchID: ' + launch.content[0].id);
+      return launch.content[0].id;
+    } catch (error) {
+      console.error('Error getting data: ', error);
+    }
   }
 }
-
-

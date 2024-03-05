@@ -1,5 +1,4 @@
 import {type TestInfo, type Page } from '@playwright/test';
-import { defineConfig, devices } from '@playwright/test';
 
 export async function screenshotOnFailure({ page }: { page: Page }, testInfo: TestInfo) {
   if (testInfo.status !== testInfo.expectedStatus) {

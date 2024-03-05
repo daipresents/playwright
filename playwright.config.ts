@@ -47,11 +47,12 @@ export default defineConfig({
     //['blob', { outputDir: 'test-results/blob' }],
     //['json', { outputFile: 'test-results/results.json' }],
     //['allure-playwright', { outputFolder: 'test-results/allure' }],
-    //['@reportportal/agent-js-playwright', rpConfig],
+    ['@reportportal/agent-js-playwright', rpConfig],
     [
       "./node_modules/playwright-slack-report/dist/src/SlackReporter.js",
       {
-        slackWebHookUrl: process.env.SLACK_HOOK,
+        //slackWebHookUrl: process.env.SLACK_HOOK,
+        channels: ["general"],
         sendResults: "always", // "always" , "on-failure", "off"
       },
     ],

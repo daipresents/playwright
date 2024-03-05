@@ -7,11 +7,13 @@ export default function generateReportPortalLayout(
   summaryResults: SummaryResults,
 ): Array<(Block | KnownBlock)> {
 
-  const launchID: Promise<string> = getLaunchID().then((value) => String(value));
+  const launchID = getLaunchID();
   console.log('launchID: ' + launchID);
 
   const message = createMessage(summaryResults, launchID);
   console.log('message: ' + message);
+
+  console.log('return block');
 
   return [
     {
@@ -24,7 +26,7 @@ export default function generateReportPortalLayout(
   ];
 }
 
-function getLaunchID() {
+async function getLaunchID() {
   const reportPortalClient = new ReportPortalClient({
     apiKey: process.env.REPORT_PORTAL_API_KEY,
     endpoint: process.env.REPORT_PORTAL_API_URL,
@@ -32,19 +34,8 @@ function getLaunchID() {
     launch: process.env.REPORT_PORTAL_LAUNCH_NAME,
   });
 
-  return reportPortalClient.getLaunchID();
-  //let launchID = '';
-  // reportPortalClient.getLaunchID().then((response) => {
-  //   console.log('You have successfully connected to the server. ReportPortalClient.getLaunchID()');
-  //   launchID = response.content[0].id;
-  //   console.log('getLaunchID() launchID: ' + launchID);
-  //   return launchID;
-  // }, (error) => {
-  //   const errorMessage = 'Error connection to server. ReportPortalClient.getLaunchID()';
-  //   console.log(errorMessage);
-  //   console.dir(error);
-  //   throw new Error(errorMessage);
-  // });
+  const launch = await reportPortalClient.getLatestLaunchByName();
+  return launch.id;
 }
 
 function createMessage(summaryResults, launchID) {
@@ -59,6 +50,5 @@ function createMessage(summaryResults, launchID) {
                     process.env.REPORT_PORTAL_PROJECT_NAME + '/launches/all/' +
                     launchID;
   message = message + `\nPlease check here: ${launchURL}`;
-  console.log('createMessage() message: ' + message);
   return message;
 }

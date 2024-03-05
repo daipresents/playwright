@@ -1,29 +1,13 @@
 import { defineConfig, devices } from '@playwright/test';
-import 'dotenv/config'
+import reportPortalConfig from './lib/report-portal-config';
+import generateReportPortalLayout from "./lib/slack-report-portal-layout";
 
 /**
  * Read environment variables from file.
  * https://github.com/motdotla/dotenv
  */
+import 'dotenv/config'
 require('dotenv').config();
-
-// See https://github.com/reportportal/agent-js-playwright?tab=readme-ov-file#configuration
-export const rpConfig = {
-  apiKey: process.env.REPORT_PORTAL_API_KEY,
-  endpoint: process.env.REPORT_PORTAL_URL,
-  project: process.env.REPORT_PORTAL_PROJECT_NAME,
-  launch : process.env.REPORT_PORTAL_LAUNCH_NAME,
-  attributes: [
-    {
-      key: 'platform',
-      value: 'web',
-    },
-    {
-      key: 'testType',
-      value: 'e2e',
-    },
-  ],
-};
 
 /**
  * See https://playwright.dev/docs/test-configuration.
@@ -47,13 +31,14 @@ export default defineConfig({
     //['blob', { outputDir: 'test-results/blob' }],
     //['json', { outputFile: 'test-results/results.json' }],
     //['allure-playwright', { outputFolder: 'test-results/allure' }],
-    ['@reportportal/agent-js-playwright', rpConfig],
+    ['@reportportal/agent-js-playwright', reportPortalConfig],
     [
       "./node_modules/playwright-slack-report/dist/src/SlackReporter.js",
       {
-        //slackWebHookUrl: process.env.SLACK_HOOK,
-        channels: ["general"],
+        slackWebHookUrl: process.env.SLACK_HOOK,
+        //channels: ["general"],
         sendResults: "always", // "always" , "on-failure", "off"
+        layout: generateReportPortalLayout,
       },
     ],
   ],
@@ -82,7 +67,7 @@ export default defineConfig({
   // When using BrowserStack, if the timeout is short, 
   // you will get an error "Session is terminated abruptly".
   // Therefore, the timeout period is set longer.
-  //timeout: 60 * 1000,
+  timeout: 5 * 1000,
   expect: {
     timeout: 3 * 1000,
   },

@@ -109,6 +109,22 @@ Slack message is like this(Same as Webhook):
 1. https://www.npmjs.com/package/playwright-slack-report#option-c---send-your-json-results-via-cli
 2. https://playwright.dev/docs/test-sharding#merging-reports-from-multiple-shards
 
+### Custom Message
+See https://www.npmjs.com/package/playwright-slack-report#-define-your-own-slack-message-custom-layout
+
+Install `@slack/types`.
+
+```
+npm install @slack/types -D
+```
+
+https://www.npmjs.com/package/typed-rest-client
+https://www.npmjs.com/package/axios
+
+npm install typed-rest-client --save
+npm install axios --save
+
+
 ## Teams
 See [Playwright Tests with MS Teams Webhook Notifications](https://medium.com/@dnsvikas.wins/playwright-tests-with-ms-teams-webhook-notifications-58508eeb909d)
 

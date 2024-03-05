@@ -1,7 +1,7 @@
 import { test, expect } from '@playwright/test';
 import { DaipresentsTopPage } from '../pages/daipresents-top-page';
 import { DaipresentsAgilePage } from '../pages/daipresents-agile-page';
-import { screenshotOnFailure } from '../lib/screenshot';
+import screenshotOnFailure from '../lib/screenshot';
 test.afterEach(screenshotOnFailure);
 
 test.describe('Test sample tests', () => {

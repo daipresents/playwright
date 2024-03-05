@@ -1,6 +1,6 @@
 import { test } from '@playwright/test';
 import { DaipresentsTopPage } from '../pages/daipresents-top-page';
-import { screenshotOnFailure } from '../lib/screenshot';
+import screenshotOnFailure from '../lib/screenshot';
 test.afterEach(screenshotOnFailure);
 
 test('failure test', async ({ page }) => {

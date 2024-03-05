@@ -1,6 +1,6 @@
 import {type TestInfo, type Page } from '@playwright/test';
 
-export async function screenshotOnFailure({ page }: { page: Page }, testInfo: TestInfo) {
+async function screenshotOnFailure({ page }: { page: Page }, testInfo: TestInfo) {
   if (testInfo.status !== testInfo.expectedStatus) {
     // Get a unique place for the screenshot.
     const screenshotPath = testInfo.outputPath(`./failure.png`);
@@ -10,3 +10,5 @@ export async function screenshotOnFailure({ page }: { page: Page }, testInfo: Te
     await page.screenshot({ path: screenshotPath });
   }
 }
+
+export default screenshotOnFailure;

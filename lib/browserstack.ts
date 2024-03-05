@@ -12,7 +12,7 @@ const caps = {
     'resolution': '1280x800',
 };
 
-export const test = base.extend({
+const test = base.extend({
     page: async ({ playwright }, use, testInfo) => {
         const vBrowser = await playwright.chromium.connect({ wsEndpoint: `wss://cdp.browserstack.com/playwright?caps=${encodeURIComponent(JSON.stringify(caps))}`,});
         const vContext = await vBrowser.newContext(testInfo.project.use);
@@ -22,3 +22,5 @@ export const test = base.extend({
         await vBrowser.close();
     }
 });
+
+export default test;

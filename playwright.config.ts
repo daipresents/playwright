@@ -1,6 +1,6 @@
 import { defineConfig, devices } from '@playwright/test';
 import reportPortalConfig from './lib/report-portal-config';
-import { generateCustomLayoutAsync } from "./lib/slack-report-portal-layout";
+import { generateReportPortalLayoutAsync } from "./lib/report-portal-layout-async";
 
 /**
  * Read environment variables from file.
@@ -38,7 +38,7 @@ export default defineConfig({
         slackWebHookUrl: process.env.SLACK_HOOK,
         //channels: ["general"],
         sendResults: "always", // "always" , "on-failure", "off"
-        layoutAsync: generateCustomLayoutAsync,
+        layoutAsync: generateReportPortalLayoutAsync,
       },
     ],
   ],

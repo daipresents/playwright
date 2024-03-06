@@ -28,8 +28,7 @@ async function reportLink() {
   }
 }
 
-
-export async function generateCustomLayoutAsync (summaryResults: SummaryResults): Promise<Array<KnownBlock | Block>> {
+export async function generateReportPortalLayoutAsync (summaryResults: SummaryResults): Promise<Array<KnownBlock | Block>> {
   const { tests } = summaryResults;
   const header = {
     type: "header",

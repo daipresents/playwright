@@ -1,6 +1,7 @@
 import { Block, KnownBlock } from '@slack/types';
-import { SummaryResults } from 'playwright-slack-report/dist/src'
-import ReportPortalClient from './report-portal-client'
+import { SummaryResults } from 'playwright-slack-report/dist/src';
+import { generateBlocks } from 'playwright-slack-report/dist/src/LayoutGenerator';
+import ReportPortalClient from './report-portal-client';
 require('dotenv').config();
 
 const reportPortalClient = new ReportPortalClient(
@@ -13,11 +14,9 @@ const reportPortalClient = new ReportPortalClient(
   { name: "DAIPRESENTS AGENT", version: "1.0" }
 );
 
-async function reportLink() {
+async function getReportLink() {
   try {
     const launchID = await reportPortalClient.getLaunchID();
-    console.log('reportPortalLaunchLink.launchID: ' + launchID);
-
     const launchURL = process.env.REPORT_PORTAL_BASE_URL + '/ui/#' +
                       process.env.REPORT_PORTAL_PROJECT_NAME + '/launches/all/' +
                       launchID;
@@ -29,37 +28,10 @@ async function reportLink() {
 }
 
 export async function generateReportPortalLayoutAsync (summaryResults: SummaryResults): Promise<Array<KnownBlock | Block>> {
-  const { tests } = summaryResults;
-  const header = {
-    type: "header",
-    text: {
-      type: "plain_text",
-      text: "🎭 *Playwright E2E Test Results*",
-      emoji: true,
-    },
-  };
+  const blocks = await generateBlocks(summaryResults, summaryResults.failed);
 
-  const permalink = await reportLink();
-  const summary = {
-    type: "section",
-    text: {
-      type: "mrkdwn",
-      text: `✅ *${summaryResults.passed}* | ❌ *${summaryResults.failed}* | ⏩ *${summaryResults.skipped}* \nSee: <${permalink}>`,
-    },
-  };
-
-  const fails: Array<KnownBlock | Block> = [];
-  for (const t of tests) {
-    if (t.status === "failed" || t.status === "timedOut") {
-      fails.push({
-        type: "section",
-        text: {
-          type: "mrkdwn",
-          text: `👎 *[${t.browser}] | ${t.suiteName.replace(/\W/gi, "-")}*`,
-        },
-      });
-    }
-  }
-
-  return [header, summary, { type: "divider" }, ...fails]
+  // add link to summary
+  const permalink = await getReportLink();
+  blocks[1]['text']['text'] = `${blocks[1]['text']['text']}\nSee: <${permalink}>`;
+  return blocks;
 }

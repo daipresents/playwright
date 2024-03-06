@@ -110,7 +110,7 @@ Slack message is like this(Same as Webhook):
 2. https://playwright.dev/docs/test-sharding#merging-reports-from-multiple-shards
 
 ### Custom Message
-See https://www.npmjs.com/package/playwright-slack-report#-define-your-own-slack-message-custom-layout
+See https://github.com/ryanrosello-og/playwright-slack-report?tab=readme-ov-file#-define-your-own-slack-message-custom-layout
 
 Install `@slack/types`.
 
@@ -118,17 +118,93 @@ Install `@slack/types`.
 npm install @slack/types -D
 ```
 
-https://www.npmjs.com/package/typed-rest-client
-https://www.npmjs.com/package/axios
+Implement custome layout function:
 
-npm install typed-rest-client --save
-npm install axios --save
+```
+import { Block, KnownBlock } from '@slack/types';
+import { SummaryResults } from "playwright-slack-report/dist/src";
 
-https://github.com/reportportal/client-javascript/blob/64e9266faf28f6693776f92128761cc037eff678/lib/report-portal-client.js#L267
-https://github.com/ryanrosello-og/playwright-slack-report/blob/0294936b0cb105c1fa657df34fa71662458e33d7/src/LayoutGenerator.ts#L4C6-L4C21
-https://github.com/ryanrosello-og/playwright-slack-report/blob/0294936b0cb105c1fa657df34fa71662458e33d7/src/SlackWebhookClient.ts#L29
+export default function generateCustomLayoutSimpleExample(
+  summaryResults: SummaryResults,
+): Array<Block | KnownBlock> {
+  return [
+    {
+      type: 'section',
+      text: {
+        type: 'mrkdwn',
+        text:
+          summaryResults.failed === 0
+            ? ':tada: All tests passed!'
+            : `😭${summaryResults.failed} failure(s) out of ${summaryResults.tests.length} tests`,
+      },
+    },
+  ];
+}
+```
 
+Add the function to `playwright.config.ts`:
 
+```
+import { generateCustomLayoutSimpleExample } from "./my_custom_layout";
+
+  ...
+
+  reporter: [
+    [
+      "./node_modules/playwright-slack-report/dist/src/SlackReporter.js",
+      {
+        channels: ["pw-tests", "ci"], // provide one or more Slack channels
+        sendResults: "always", // "always" , "on-failure", "off"
+        layout: generateCustomLayoutSimpleExample,
+        ...
+      },
+    ],
+  ],
+```
+
+Default layout + ReportPortal Link version:
+
+```
+// playwright.config.ts
+// https://github.com/daipresents/playwright/blob/main/playwright.config.ts#L26
+
+...
+
+  reporter: [
+    ['@reportportal/agent-js-playwright', reportPortalConfig],
+    [
+      "./node_modules/playwright-slack-report/dist/src/SlackReporter.js",
+      {
+        slackWebHookUrl: process.env.SLACK_HOOK,
+        //channels: ["general"],
+        sendResults: "always", // "always" , "on-failure", "off"
+        layoutAsync: generateReportPortalLayoutAsync,
+      },
+    ],
+  ],
+
+...
+```
+
+```
+// report-portallayout-async.ts
+// https://github.com/daipresents/playwright/blob/main/lib/report-portal-layout-async.ts
+...
+
+export async function generateReportPortalLayoutAsync (summaryResults: SummaryResults): Promise<Array<KnownBlock | Block>> {
+  const blocks = await generateBlocks(summaryResults, summaryResults.failed);
+
+  // add link to summary
+  const permalink = await reportLink();
+  blocks[1]['text']['text'] = `${blocks[1]['text']['text']}\nSee: <${permalink}>`;
+  return blocks;
+}
+
+...
+
+```
+
+![](./images/notification-slack12.png)
 
 ## Teams
 See [Playwright Tests with MS Teams Webhook Notifications](https://medium.com/@dnsvikas.wins/playwright-tests-with-ms-teams-webhook-notifications-58508eeb909d)

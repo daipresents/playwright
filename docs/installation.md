@@ -8,7 +8,7 @@ Install node and npm.
 ### Windows
 See https://nodejs.org/en/download
 
-Check version+
+Check version:
 
 ```
 node -v
@@ -66,6 +66,12 @@ cd playwright
 
 # Install library
 npm install
+
+# Install test browser
+npx playwright install
+
+# Install Microsoft Edge
+npx playwright install msedge
 ```
 
 Create .env file for environmental variables.
@@ -121,10 +127,3 @@ See https://github.com/motdotla/dotenv?tab=readme-ov-file
 ```
 npm install dotenv --save
 ```
-
-### Install Microsoft Edge
-
-```
-npx playwright install msedge
-```
-

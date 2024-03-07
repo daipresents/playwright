@@ -1,9 +1,22 @@
 [README](../README.md) > Installation
 
-# Installation (For Mac)
+# Installation
 Install node and npm.
 
-## Install Homebrew
+## Install Node
+
+### Windows
+See https://nodejs.org/en/download
+
+Check version+
+
+```
+node -v
+npm -v
+```
+
+### Mac
+#### Install Homebrew
 See https://brew.sh/ja/
 
 ```
@@ -14,7 +27,7 @@ See https://brew.sh/ja/
 eval "$(/opt/homebrew/bin/brew shellenv)"
 ```
 
-## Install nodebrew
+#### Install nodebrew
 See https://github.com/hokaccha/nodebrew
 
 ```
@@ -28,7 +41,7 @@ curl -L git.io/nodebrew | perl - setup
 source ~/.zprofile
 ```
 
-## Install nodejs
+#### Install nodejs
 
 ```
 # Install latest version
@@ -58,7 +71,10 @@ npm install
 Create .env file for environmental variables.
 
 ```
+// Mac
 touch .env
+
+// Windows: Create new .env file frm explore.
 ```
 
 Sample. 

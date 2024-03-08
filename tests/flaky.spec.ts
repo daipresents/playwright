@@ -14,7 +14,7 @@ test.describe('Test flaky tests', () => {
 
     await test.step('たまに失敗するチェック', async () => {
       const random: number = Math.random();
-      console.log('random: ' + random);
+      console.log(`random: ${random}`);
       
       if (0.1 < random) {
         // Pass

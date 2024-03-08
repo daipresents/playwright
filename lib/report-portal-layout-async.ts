@@ -16,12 +16,11 @@ const reportPortalClient = new ReportPortalClient(
 
 async function getReportLink(): Promise<string> {
   let launchURL: string = 
-    process.env.REPORT_PORTAL_BASE_URL + '/ui/#' +
-    process.env.REPORT_PORTAL_PROJECT_NAME + '/launches/all';
+    `${process.env.REPORT_PORTAL_BASE_URL}/ui/#${process.env.REPORT_PORTAL_PROJECT_NAME}/launches/all`;
   
   try {
     const launchID: string = await reportPortalClient.getLaunchID();
-    return launchURL + '/' + launchID;
+    return `${launchURL}/${launchID}`;
     
   } catch (err) {
     console.error("🔥🔥 Error", err);

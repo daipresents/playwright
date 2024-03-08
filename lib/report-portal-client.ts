@@ -8,14 +8,12 @@ export default class ReportPortalClient extends RPClient {
   }
 
   async getLaunchID(): Promise<string> {
-    const url = this.config.endpoint + 
-                '/' + this.config.project +
-                '/launch/latest?' +
-                'filter.eq.name=' + this.config.launch;
+    const url = 
+      `${this.config.endpoint}/${this.config.project}/launch/latest?filter.eq.name=${this.config.launch}`;
 
     try {
       const launch = await RestClient.request('GET', url, {}, { headers: this.headers });
-      console.log('ReportPortalClient.getLatestLaunchByName launchID: ' + launch.content[0].id);
+      console.log(`ReportPortalClient.getLatestLaunchByName launchID: ${launch.content[0].id}`);
       return launch.content[0].id;
     } catch (error) {
       console.error('Error getting data: ', error);

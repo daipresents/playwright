@@ -3,7 +3,7 @@ import { DaipresentsTopPage } from '../pages/daipresents-top-page';
 
 test('take screenshots', async ({ page }, testInfo) => {
   // Base URLを開く
-  const daipresentsTopPage = new DaipresentsTopPage(page);
+  const daipresentsTopPage: DaipresentsTopPage = new DaipresentsTopPage(page);
   await daipresentsTopPage.goto();
 
   // screenshot

@@ -6,15 +6,16 @@ test.afterEach(screenshotOnFailure);
 
 test.describe('Test flaky tests', () => {
   test('flaky test', async ({ page }) => {
-    const daipresentsTopPage = new DaipresentsTopPage(page);
+    const daipresentsTopPage: DaipresentsTopPage = new DaipresentsTopPage(page);
 
     await test.step('Base URLを開く', async () => {
       await daipresentsTopPage.goto();
     });
 
     await test.step('たまに失敗するチェック', async () => {
-      const random = Math.random();
+      const random: number = Math.random();
       console.log('random: ' + random);
+      
       if (0.1 < random) {
         // Pass
         await expect(daipresentsTopPage.titleLink).toBeVisible();

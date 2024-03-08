@@ -3,11 +3,11 @@ import RPClient from '@reportportal/client-javascript/lib/report-portal-client'
 import RestClient from '@reportportal/client-javascript/lib/rest'
 
 export default class ReportPortalClient extends RPClient {
-  constructor(options, agentParams) {
+  constructor(options: any, agentParams: any) {
     super(options, agentParams);
   }
 
-  async getLaunchID() {
+  async getLaunchID(): Promise<string> {
     const url = this.config.endpoint + 
                 '/' + this.config.project +
                 '/launch/latest?' +
@@ -20,5 +20,8 @@ export default class ReportPortalClient extends RPClient {
     } catch (error) {
       console.error('Error getting data: ', error);
     }
+
+    // return ''
+    return '';
   }
 }

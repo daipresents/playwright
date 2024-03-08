@@ -14,24 +14,26 @@ const reportPortalClient = new ReportPortalClient(
   { name: "DAIPRESENTS AGENT", version: "1.0" }
 );
 
-async function getReportLink() {
+async function getReportLink(): Promise<string> {
+  let launchURL: string = 
+    process.env.REPORT_PORTAL_BASE_URL + '/ui/#' +
+    process.env.REPORT_PORTAL_PROJECT_NAME + '/launches/all';
+  
   try {
-    const launchID = await reportPortalClient.getLaunchID();
-    const launchURL = process.env.REPORT_PORTAL_BASE_URL + '/ui/#' +
-                      process.env.REPORT_PORTAL_PROJECT_NAME + '/launches/all/' +
-                      launchID;
-    return launchURL;
-
+    const launchID: string = await reportPortalClient.getLaunchID();
+    return launchURL + '/' + launchID;
+    
   } catch (err) {
-    console.log("🔥🔥 Error", err);
+    console.error("🔥🔥 Error", err);
+    return launchURL;
   }
 }
 
 export async function generateReportPortalLayoutAsync (summaryResults: SummaryResults): Promise<Array<KnownBlock | Block>> {
-  const blocks = await generateBlocks(summaryResults, summaryResults.failed);
+  const blocks: (Block | KnownBlock)[] = await generateBlocks(summaryResults, summaryResults.failed);
+  const permalink: string = await getReportLink();
 
   // add link to summary
-  const permalink = await getReportLink();
   blocks[1]['text']['text'] = `${blocks[1]['text']['text']}\nSee: <${permalink}>`;
   return blocks;
 }

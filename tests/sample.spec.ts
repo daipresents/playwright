@@ -6,7 +6,7 @@ test.afterEach(screenshotOnFailure);
 
 test.describe('Test sample tests', () => {
   test('has title', async ({ page }) => {
-    const daipresentsTopPage = new DaipresentsTopPage(page);
+    const daipresentsTopPage: DaipresentsTopPage = new DaipresentsTopPage(page);
 
     await test.step('Base URLを開く', async () => {
       await daipresentsTopPage.goto();
@@ -18,7 +18,7 @@ test.describe('Test sample tests', () => {
   });
 
   test('get agile link', async ({ page }) => {
-    const daipresentsTopPage = new DaipresentsTopPage(page);
+    const daipresentsTopPage: DaipresentsTopPage = new DaipresentsTopPage(page);
 
     await test.step('Base URLを開く', async () => {
       await daipresentsTopPage.goto();
@@ -29,7 +29,7 @@ test.describe('Test sample tests', () => {
     });
 
     await test.step('見出しにタグが表示されているか確認', async () => {
-      const daipresentsAgilePage = new DaipresentsAgilePage(page);
+      const daipresentsAgilePage: DaipresentsAgilePage = new DaipresentsAgilePage(page);
       await expect(daipresentsAgilePage.tagTitle).toBeVisible();
     });
   });

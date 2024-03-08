@@ -31,16 +31,16 @@ export default defineConfig({
     //['blob', { outputDir: 'test-results/blob' }],
     //['json', { outputFile: 'test-results/results.json' }],
     //['allure-playwright', { outputFolder: 'test-results/allure' }],
-    // ['@reportportal/agent-js-playwright', reportPortalConfig],
-    // [
-    //   "./node_modules/playwright-slack-report/dist/src/SlackReporter.js",
-    //   {
-    //     slackWebHookUrl: process.env.SLACK_HOOK,
-    //     //channels: ["general"],
-    //     sendResults: "always", // "always" , "on-failure", "off"
-    //     layoutAsync: generateReportPortalLayoutAsync,
-    //   },
-    // ],
+    ['@reportportal/agent-js-playwright', reportPortalConfig],
+    [
+      "./node_modules/playwright-slack-report/dist/src/SlackReporter.js",
+      {
+        slackWebHookUrl: process.env.SLACK_HOOK,
+        //channels: ["general"],
+        sendResults: "always", // "always" , "on-failure", "off"
+        layoutAsync: generateReportPortalLayoutAsync,
+      },
+    ],
   ],
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {

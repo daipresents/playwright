@@ -2,7 +2,7 @@ require('dotenv').config();
 import RPClient from '@reportportal/client-javascript/lib/report-portal-client'
 import RestClient from '@reportportal/client-javascript/lib/rest'
 
-export default class ReportPortalClient extends RPClient {
+export class ReportPortalClient extends RPClient {
   constructor(options: any, agentParams: any) {
     super(options, agentParams);
   }

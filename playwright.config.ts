@@ -1,5 +1,5 @@
 import { defineConfig, devices } from '@playwright/test';
-import reportPortalConfig from './lib/report-portal-config';
+import { reportPortalConfig } from './lib/report-portal-config';
 import { generateReportPortalLayoutAsync } from './lib/report-portal-layout-async';
 
 /**
@@ -25,12 +25,12 @@ export default defineConfig({
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
   reporter: [
     ['list', { printSteps: true }],
-    //['line'],
-    //['dot'],
-    //['html', { open: 'on-failure' }],
-    //['blob', { outputDir: 'test-results/blob' }],
-    //['json', { outputFile: 'test-results/results.json' }],
-    //['allure-playwright', { outputFolder: 'test-results/allure' }],
+    // ['line'],
+    // ['dot'],
+    // ['html', { open: 'on-failure' }],
+    // ['blob', { outputDir: 'test-results/blob' }],
+    // ['json', { outputFile: 'test-results/results.json' }],
+    // ['allure-playwright', { outputFolder: 'test-results/allure' }],
     // ['@reportportal/agent-js-playwright', reportPortalConfig],
     // [
     //   './node_modules/playwright-slack-report/dist/src/SlackReporter.js',

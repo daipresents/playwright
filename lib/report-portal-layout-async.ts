@@ -1,7 +1,7 @@
 import { Block, KnownBlock } from '@slack/types';
 import { SummaryResults } from 'playwright-slack-report/dist/src';
 import { generateBlocks } from 'playwright-slack-report/dist/src/LayoutGenerator';
-import ReportPortalClient from './report-portal-client';
+import { ReportPortalClient } from './report-portal-client';
 require('dotenv').config();
 
 const reportPortalClient = new ReportPortalClient(

@@ -1,7 +1,7 @@
 import 'dotenv/config'
 
 // See https://github.com/reportportal/agent-js-playwright?tab=readme-ov-file#configuration
-const reportPortalConfig = {
+export const reportPortalConfig = {
   apiKey: process.env.REPORT_PORTAL_API_KEY,
   endpoint: process.env.REPORT_PORTAL_API_URL,
   project: process.env.REPORT_PORTAL_PROJECT_NAME,
@@ -17,5 +17,3 @@ const reportPortalConfig = {
     },
   ],
 };
-
-export default reportPortalConfig;

@@ -11,7 +11,7 @@ const reportPortalClient = new ReportPortalClient(
     project: process.env.REPORT_PORTAL_PROJECT_NAME,
     launch: process.env.REPORT_PORTAL_LAUNCH_NAME,
   },
-  { name: "DAIPRESENTS AGENT", version: "1.0" }
+  { name: 'DAIPRESENTS AGENT', version: '1.0' }
 );
 
 async function getReportLink(): Promise<string> {
@@ -22,8 +22,8 @@ async function getReportLink(): Promise<string> {
     const launchID: string = await reportPortalClient.getLaunchID();
     return `${launchURL}/${launchID}`;
     
-  } catch (err) {
-    console.error("🔥🔥 Error", err);
+  } catch (error) {
+    console.error('🔥🔥 Error', error);
     return launchURL;
   }
 }

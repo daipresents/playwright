@@ -1,6 +1,6 @@
 import { defineConfig, devices } from '@playwright/test';
 import reportPortalConfig from './lib/report-portal-config';
-import { generateReportPortalLayoutAsync } from "./lib/report-portal-layout-async";
+import { generateReportPortalLayoutAsync } from './lib/report-portal-layout-async';
 
 /**
  * Read environment variables from file.
@@ -33,11 +33,11 @@ export default defineConfig({
     //['allure-playwright', { outputFolder: 'test-results/allure' }],
     ['@reportportal/agent-js-playwright', reportPortalConfig],
     [
-      "./node_modules/playwright-slack-report/dist/src/SlackReporter.js",
+      './node_modules/playwright-slack-report/dist/src/SlackReporter.js',
       {
         slackWebHookUrl: process.env.SLACK_HOOK,
-        //channels: ["general"],
-        sendResults: "always", // "always" , "on-failure", "off"
+        //channels: ['general'],
+        sendResults: 'always', // 'always' , 'on-failure', 'off'
         layoutAsync: generateReportPortalLayoutAsync,
       },
     ],

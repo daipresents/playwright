@@ -17,7 +17,11 @@
     "@types/node": "^20.11.13",
     "allure-playwright": "^2.12.2",
     "monocart-reporter": "^2.3.3",
-    "playwright-slack-report": "^1.1.72"
+    "playwright-slack-report": "^1.1.72",
+    "reg-keygen-git-hash-plugin": "^0.14.3",
+    "reg-notify-github-plugin": "^0.14.4",
+    "reg-notify-slack-plugin": "^0.14.4",
+    "reg-suit": "^0.14.4"
   },
   "dependencies": {
     "@currents/playwright": "^0.12.1",
